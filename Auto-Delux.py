@@ -1,25 +1,17 @@
-from pymouse import PyMouse
 import pyautogui
-import keyboard  # using module keyboard
+import keyboard
 
-ac =1
-while True:  # making a loop
-    pyautogui.position()
-    try:  # used try so that if user pressed other than the given key error will not be shown
-        if keyboard.is_pressed('q'):  # if key 'q' is pressed 
-            m.click(x,y,1) #the third argument "1" represents the mouse button
-           
-    except:
-        break  # if user pressed a key other than the given key the loop will break
+ac = 1
 
+while True:
+    x, y = pyautogui.position()
 
-pyautogui.position()
+    if keyboard.is_pressed('q'):
+        if ac == 1:
+            #pyautogui.click(x, y)
+            ac = 0
+        elif ac == 0:
+            ac = 1
 
-
-m = PyMouse()
-m.position() #gets mouse current position coordinates
-m.move(x,y)
-m.click(x,y) #the third argument "1" represents the mouse button
-m.press(x,y) #mouse button press
-m.release(x,y) #mouse button release
-
+    if ac == 0:
+        pyautogui.click(x, y)
