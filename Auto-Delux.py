@@ -11,8 +11,8 @@ print(f"Ok, {CPS} is seleced")
 
 def Clicks(x):
     if x == 0:
-        return "Går inte att dela med noll"
-    return 1 / x
+        return "Needs to be a posetiv number!"
+    return 1 / x 
 
 while True:
     x, y = pyautogui.position()
@@ -24,7 +24,7 @@ while True:
         elif ac == 0:
             ac = 1
             print("Autoclicker OFF")
-
+    #keyboard.wait('q')
     if ac == 0:
         pyautogui.click(x, y)
         time.sleep(Clicks(CPS))
