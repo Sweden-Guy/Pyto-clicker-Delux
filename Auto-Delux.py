@@ -2,29 +2,53 @@ import pyautogui
 import keyboard
 import time
 
-ac = 1
-
-print("Auto Clicker Delux")
-print("What CPS do you want?")
-CPS = float(input())
-print(f"Ok, {CPS} is seleced")
+pyautogui.PAUSE = 0
 
 def Clicks(x):
-    if x == 0:
-        return "Needs to be a posetiv number!"
-    return 1 / x 
+    if x <= 0:
+        return 0
+    return 1 / x
 
 while True:
-    x, y = pyautogui.position()
+    ac = 1  
+    print("\n--- Auto Clicker Deluxe ---")
+    print("What CPS do you want?")
+    
+    try:
+        CPS = float(input())
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+        
+    print(f"Ok, {CPS} is selected")
+    print("If you want to change CPS press F7")
+    print("Press F6 to toggle the autoclicker ON/OFF.")
+    
+    delay = Clicks(CPS)
+    restart = False
 
-    if keyboard.is_pressed('q'):
-        if ac == 1:
-            ac = 0
-            print("Autoclicker ON")
-        elif ac == 0:
-            ac = 1
-            print("Autoclicker OFF")
-    #keyboard.wait('q')
-    if ac == 0:
-        pyautogui.click(x, y)
-        time.sleep(Clicks(CPS))
+    while not restart:
+        # Toggle ON/OFF med F6
+        if keyboard.is_pressed('f6'):
+            if ac == 1:
+                ac = 0
+                print("Autoclicker ON")
+            else:
+                ac = 1
+                print("Autoclicker OFF")
+            
+            while keyboard.is_pressed('f6'):
+                time.sleep(0.05)
+
+        if keyboard.is_pressed('f7'):
+            print("Restarting... Choose new CPS.")
+            restart = True
+
+            while keyboard.is_pressed('f7'):
+                time.sleep(0.05)
+            break 
+
+        if ac == 0:
+            pyautogui.click()
+            if delay > 0:
+                time.sleep(delay)
