@@ -39,11 +39,3 @@ Enter your desired CPS when prompted.
 | --- | ------------------------- |
 | F6  | Toggle autoclicker ON/OFF |
 | F7  | Change CPS                |
-
-## Disclaimer
-
-Use responsibly. Some applications and games may restrict the use of autoclickers.
-
-## License
-
-This project is open source.
