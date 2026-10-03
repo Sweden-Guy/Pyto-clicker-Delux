@@ -1,4 +1,4 @@
-# Auto Clicker Deluxe
+# Pyto Clicker Deluxe
 
 A simple Python autoclicker using PyAutoGUI and Keyboard.
 
